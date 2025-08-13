@@ -7,6 +7,7 @@ Verifica e apresenta quais valores são números primos.
 #include <cstdlib>
 #include <ctime>
 #include <cmath>
+#include <chrono>
 
 using namespace std;
 

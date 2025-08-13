@@ -1,5 +1,7 @@
 #include "Menu.h"
 
+#define tamanhoLista 1000
+
 Menu::Menu(){}
 
 Menu::~Menu(){}
@@ -19,18 +21,17 @@ int Menu::exibeMenu(){
 }
 
 void Menu::criaLista(){
-    cout << "Quantos números a lista terá?" << endl;
-    cin >> tamanhoLista;
-    cout << endl;
-    if (tamanhoLista < 1 || tamanhoLista > 1000) {
-        cout << "Tamanho inválido. Deve ser entre 1 e 1000." << endl;
-    }
+    auto inicio = chrono::high_resolution_clock::now();
     for (int i = 0; i < tamanhoLista; i++) {
         lista[i] = rand() % 1501;
     }
+    auto fim = chrono::high_resolution_clock::now();
+    auto duracao = chrono::duration_cast<chrono::microseconds>(fim - inicio);
+    cout << "Tempo decorrido: " << duracao.count() << " microssegundos\n";
 }
 
 void Menu::ordena(){
+    auto inicio = chrono::high_resolution_clock::now();
     int ordenada[tamanhoLista];
     int maior = -1;
     int indiceMaior = 0;
@@ -50,6 +51,9 @@ void Menu::ordena(){
     for (int i = 0; i < tamanhoLista; i++) {
         lista[i] = ordenada[i];
     }
+    auto fim = chrono::high_resolution_clock::now();
+    auto duracao = chrono::duration_cast<chrono::microseconds>(fim - inicio);
+    std::cout << "Tempo decorrido: " << duracao.count() << " microssegundos\n";
 }
 
 void Menu::imprimeLista(){
@@ -65,7 +69,8 @@ void Menu::verificaPrimos(){
     int limite = 0;
     int numPrimos = 0;
     bool ehPrimo;
-    
+
+    auto inicio = chrono::high_resolution_clock::now();
     for (int i = 0; i < tamanhoLista; i++){
         limite = sqrt(lista[i]);
         ehPrimo = true;
@@ -87,6 +92,9 @@ void Menu::verificaPrimos(){
         }
     }
 
+    auto fim = chrono::high_resolution_clock::now();
+    auto duracao = chrono::duration_cast<chrono::microseconds>(fim - inicio);
+
     if (numPrimos == 0){
         cout << "Nenhum número primo encontrado na lista." << endl << endl;
         return;
@@ -95,6 +103,7 @@ void Menu::verificaPrimos(){
         for (int i = 0; i < numPrimos; i++){
             cout << primos[i] << endl;
         }
-        cout << endl;
+        cout << endl << numPrimos << endl;
     }
+    std::cout << "Tempo decorrido: " << duracao.count() << " microssegundos\n";
 }
