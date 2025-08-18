@@ -1,7 +1,3 @@
-/*Cria um array de 1.000 valores inteiros randomicamente. 
-Ordena esse array de menor a maior.
-Verifica e apresenta quais valores são números primos.
-*/
 
 #include <iostream>
 #include <cstdlib>
@@ -9,12 +5,13 @@ Verifica e apresenta quais valores são números primos.
 #include <cmath>
 #include <chrono>
 
+#define tamanhoLista 1000
+
 using namespace std;
 
 class Menu{
     private:
-        int lista[1000];
-        int tamanhoLista = 0;
+        int lista[tamanhoLista];
 
     public:
         Menu();
@@ -24,4 +21,5 @@ class Menu{
         void ordena();
         void imprimeLista();
         void verificaPrimos();
+        void rodadas();
 };

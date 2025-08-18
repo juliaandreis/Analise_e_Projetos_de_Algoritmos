@@ -1,7 +1,5 @@
 #include "Menu.h"
 
-#define tamanhoLista 1000
-
 Menu::Menu(){}
 
 Menu::~Menu(){}
@@ -27,7 +25,7 @@ void Menu::criaLista(){
     }
     auto fim = chrono::high_resolution_clock::now();
     auto duracao = chrono::duration_cast<chrono::microseconds>(fim - inicio);
-    cout << "Tempo decorrido: " << duracao.count() << " microssegundos\n";
+    cout << "Tempo gerar: " << duracao.count() << " microssegundos\n";
 }
 
 void Menu::ordena(){
@@ -53,7 +51,7 @@ void Menu::ordena(){
     }
     auto fim = chrono::high_resolution_clock::now();
     auto duracao = chrono::duration_cast<chrono::microseconds>(fim - inicio);
-    std::cout << "Tempo decorrido: " << duracao.count() << " microssegundos\n";
+    std::cout << "Tempo ordenar: " << duracao.count() << " microssegundos\n";
 }
 
 void Menu::imprimeLista(){
@@ -98,12 +96,33 @@ void Menu::verificaPrimos(){
     if (numPrimos == 0){
         cout << "Nenhum número primo encontrado na lista." << endl << endl;
         return;
-    } else {
+    }else {
         cout << "Números primos encontrados:" << endl;
         for (int i = 0; i < numPrimos; i++){
             cout << primos[i] << endl;
-        }
-        cout << endl << numPrimos << endl;
-    }
-    std::cout << "Tempo decorrido: " << duracao.count() << " microssegundos\n";
+        }    
+       } 
+        cout << "N primos: " << numPrimos;
+    
+    cout << "    Tempo primos: " << duracao.count() << " microssegundos\n" ;
+}
+
+void Menu::rodadas(){
+    cout << "rodada 1:" << endl;
+    auto iniciorodada = chrono::high_resolution_clock::now();
+    criaLista();
+    ordena();
+    verificaPrimos();
+    auto fimrodada = chrono::high_resolution_clock::now();
+    auto duracaorodada = chrono::duration_cast<chrono::microseconds>(fimrodada - iniciorodada);
+    cout << endl;
+    cout << "Tempo TOTAL: " << duracaorodada.count() << " microssegundos\n";
+    cout << "rodada 2:" << endl;
+    iniciorodada = chrono::high_resolution_clock::now();
+    ordena();
+    verificaPrimos();
+    fimrodada = chrono::high_resolution_clock::now();
+    duracaorodada = chrono::duration_cast<chrono::microseconds>(fimrodada - iniciorodada);
+    cout << endl << "----------------------------------------------------------------" << endl;
+    cout << "Tempo TOTAL: " << duracaorodada.count() << " microssegundos\n";
 }

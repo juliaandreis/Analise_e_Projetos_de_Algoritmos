@@ -1,3 +1,5 @@
+//Julia Andreis e Tobias Klein
+
 #include "Menu.h"
 
 int main(){
@@ -25,6 +27,10 @@ int main(){
         case 5:
             cout << "Saindo do programa." << endl;
             break;
+        case 6: {
+            menu.rodadas();
+            break;
+        }
         default:
             cout << "Opção inválida. Tente novamente." << endl;
             break;
