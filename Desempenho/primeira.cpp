@@ -1,3 +1,5 @@
+//Feito por Julia, Kauan e Tobias
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
