@@ -99,7 +99,6 @@ void selectionSort(vector<int> &arr) {
 
 int main(){
     vector<int> vetor;
-    vector<int> vetorDesordenado;
 
     srand(time(0));
     int tamanhoVetor = 1000000;
@@ -108,7 +107,6 @@ int main(){
         
         for (int i = 0; i < tamanhoVetor; i++){
             vetor.push_back(0+rand()%1500);
-            vetorDesordenado.push_back(vetor[i]);
         }
     
         auto fim = chrono::high_resolution_clock::now();
@@ -139,5 +137,5 @@ int main(){
 
         auto fim2 = chrono::high_resolution_clock::now();
         auto duracao2 = std::chrono::duration_cast<std::chrono::milliseconds>(fim2 - inicio2);
-        cout << "Tempo para ordenar: " << duracao2.count() << " ms" << endl;
+        cout << "Tempo para ordenar o vetor já ordenado: " << duracao2.count() << " ms" << endl;
 };
