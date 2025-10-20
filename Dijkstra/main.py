@@ -2,7 +2,7 @@ import heapq
 
 class Graph:
     def __init__(self, graph: dict | None = None):
-        # NÃO usar dict{} como default argument (mutável)
+        # cria um dicionario de dicionarios
         self.graph = graph if graph is not None else {}
 
     def add_edge(self, node1, node2, weight, undirected: bool = False):
@@ -85,11 +85,6 @@ def teste1():
         print("Não há caminho de B até F.")
 
 def teste2():
-    """
-    Caso de Teste 2: Grafo com "armadilha" e nó isolado.
-    - Testa se o algoritmo escolhe um caminho indireto mais barato.
-    - Testa o comportamento com nós inalcançáveis.
-    """
     print("\n--- INÍCIO DO CASO DE TESTE 2: Armadilha e Nó Isolado ---")
     graph2 = Graph()
     graph2.add_edge("A", "B", 2, undirected = True)
