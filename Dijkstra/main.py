@@ -59,7 +59,8 @@ class Graph:
         path.reverse()
         return path, distances[target]
 
-def teste1():
+def main():
+    print("\n--- INÍCIO DO CASO DE TESTE 1: Armadilha e Nó Isolado ---")
     graph1 = {
        "A": {"B": 3, "C": 3},
        "B": {"A": 3, "D": 3.5, "E": 2.8},
@@ -71,26 +72,22 @@ def teste1():
     }
     G = Graph(graph1) #teste1
 
-    distances, _ = G.shortest_distances("B")
+    distances, _ = G.shortest_distances("B") #calcula distancias minimas a partir de B
+    
     print("Distâncias mínimas a partir do nó B:")
     for node in sorted(distances):
         d = distances[node]
         print(f"B → {node}: {d:.2f}" if d < float("inf") else f"B → {node}: ∞")
 
-    path, dist = G.shortest_path("B", "F")
+    path, dist = G.shortest_path("B", "F") #calcula distancias minimas de B a F
+    
     print()
     if path:
         print(f"Caminho mínimo B → F: {' -> '.join(path)} (distância = {dist:.2f})")
     else:
         print("Não há caminho de B até F.")
 
-def teste2():
-    """
-    Caso de Teste 2: Grafo com "armadilha" e nó isolado.
-    - Testa se o algoritmo escolhe um caminho indireto mais barato.
-    - Testa o comportamento com nós inalcançáveis.
-    """
-    print("\n--- INÍCIO DO CASO DE TESTE 2: Armadilha e Nó Isolado ---")
+    print("\n--- INÍCIO DO CASO DE TESTE 2: ---")
     graph2 = Graph()
     graph2.add_edge("A", "B", 2, undirected = True)
     graph2.add_edge("A", "D", 15, undirected = True)
@@ -102,6 +99,7 @@ def teste2():
     target = "D"
     
     distances, _ = graph2.shortest_distances("D")
+    
     print("Distâncias mínimas a partir do nó B:")
     for node in sorted(distances):
         d = distances[node]
@@ -124,9 +122,6 @@ def teste2():
     else:
         print("Resultado: INCORRETO.")
 
-def main():
-    teste1();
-    teste2();
 
 if __name__ == "__main__":
     main()
