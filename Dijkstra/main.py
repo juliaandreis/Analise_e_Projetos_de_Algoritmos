@@ -59,7 +59,7 @@ class Graph:
         return path, distances[target]
 
 def main():
-    print("\n--- INÍCIO DO CASO DE TESTE 1: Armadilha e Nó Isolado ---")
+    print("\n--- INÍCIO DO CASO DE TESTE 1: ---")
     graph1 = {
        "A": {"B": 3, "C": 3},
        "B": {"A": 3, "D": 3.5, "E": 2.8},
