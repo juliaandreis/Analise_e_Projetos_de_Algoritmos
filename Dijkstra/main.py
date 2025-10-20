@@ -2,7 +2,6 @@ import heapq
 
 class Graph:
     def __init__(self, graph: dict | None = None):
-        # NÃO usar dict{} como default argument (mutável)
         self.graph = graph if graph is not None else {}
 
     def add_edge(self, node1, node2, weight, undirected: bool = False):
