@@ -59,9 +59,8 @@ class Graph:
         path.reverse()
         return path, distances[target]
 
-
-def main():
-    graph = {
+def teste1():
+    graph1 = {
        "A": {"B": 3, "C": 3},
        "B": {"A": 3, "D": 3.5, "E": 2.8},
        "C": {"A": 3, "E": 2.8, "F": 3.5},
@@ -70,8 +69,7 @@ def main():
        "F": {"G": 2.5, "C": 3.5},
        "G": {"F": 2.5, "E": 7, "D": 10},
     }
-
-    G = Graph(graph)
+    G = Graph(graph1) #teste1
 
     distances, _ = G.shortest_distances("B")
     print("Distâncias mínimas a partir do nó B:")
@@ -85,6 +83,50 @@ def main():
         print(f"Caminho mínimo B → F: {' -> '.join(path)} (distância = {dist:.2f})")
     else:
         print("Não há caminho de B até F.")
+
+def teste2():
+    """
+    Caso de Teste 2: Grafo com "armadilha" e nó isolado.
+    - Testa se o algoritmo escolhe um caminho indireto mais barato.
+    - Testa o comportamento com nós inalcançáveis.
+    """
+    print("\n--- INÍCIO DO CASO DE TESTE 2: Armadilha e Nó Isolado ---")
+    graph2 = Graph()
+    graph2.add_edge("A", "B", 2, undirected = True)
+    graph2.add_edge("A", "D", 15, undirected = True)
+    graph2.add_edge("B", "C", 3, undirected = True)
+    graph2.add_edge("C", "D", 4, undirected = True)
+    graph2.graph["F"] = {}
+
+    source = "A"
+    target = "D"
+    
+    distances, _ = graph2.shortest_distances("D")
+    print("Distâncias mínimas a partir do nó B:")
+    for node in sorted(distances):
+        d = distances[node]
+        print(f"D → {node}: {d:.2f}" if d < float("inf") else f"D → {node}: ∞")
+    
+    # Teste 1: Encontrar o caminho mais curto de 'A' para 'D'
+    path, dist = graph2.shortest_path(source, target)
+    if path and dist < 15:
+        print(f"\nCaminho encontrado: {' -> '.join(path)} (distância = {dist:.2f})")
+    else:
+        print("Resultado: INCORRETO.")
+
+    # Teste 2: Tentar encontrar um caminho para o nó isolado 'F'
+    print()
+    path_iso, dist_iso = graph2.shortest_path(source, "F")
+    print(f"Procurando caminho de {source} para F (nó isolado)")
+    if not path_iso:
+        print("Caminho não encontrado, como esperado.")
+        print("Resultado: CORRETO.")
+    else:
+        print("Resultado: INCORRETO.")
+
+def main():
+    teste1();
+    teste2();
 
 if __name__ == "__main__":
     main()
