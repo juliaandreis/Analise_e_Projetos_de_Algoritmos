@@ -1,3 +1,5 @@
+#Julia Andreis, Kauan Gross e Tobias Klein
+
 import heapq
 from math import dist
 from turtle import update
