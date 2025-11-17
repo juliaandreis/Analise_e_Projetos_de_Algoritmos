@@ -127,10 +127,9 @@ def graph1():
 
 def graph2():
     return Graph({
-        "A": {"B": 4, "C": 2},
-        "C": {"B": 2, "D": 3},
-        "B": {"D": 3},
-        "D": {}
+        "A": {"B": 4, "C": 3},
+        "C": {"D": 1},
+        "B": {"C": -2}
     })
 
 def graph3() -> "Graph":
